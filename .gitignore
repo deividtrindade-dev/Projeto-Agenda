@@ -24,4 +24,4 @@ Thumbs.db
 # Project specific (ajuste conforme necessário)
 /db.sqlite3
 /media/
-/staticfiles/
+/static/
