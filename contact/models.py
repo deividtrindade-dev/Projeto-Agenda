@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 # ID (primary key - automatico)
 # Create your models here.
 
@@ -25,7 +26,12 @@ class Contact(models.Model):
         Category, 
         on_delete=models.SET_NULL,
         blank=True, null = True
-        )
+    )
+    owner = models.ForeignKey(
+            User, 
+            on_delete=models.SET_NULL,
+            blank=True, null = True
+    )
     
 
     def __str__(self) -> str:
