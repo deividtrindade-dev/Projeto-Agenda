@@ -10,9 +10,8 @@
       method="POST"
       enctype="multipart/form-data"
     >
-
       {% csrf_token %}      
-      
+
       <div class="form-content">
 
         {% for field in form %}
@@ -20,28 +19,30 @@
             <label for="{{ field.id_for_label }}">{{ field.label }}</label>
             {{ field }}
             {{ field.errors }}
+
+            {% if field.help_text %}
+              <p class="help-text">{{ field.help_text }}</p>
+            {% endif %}
           </div>
         {% endfor %}
       </div>
 
-       {% if form.non_field_errors %}
-          <div class="form-content">
-            <div class="form-group">
-              <div class="message error">
-                {{ form.non_field_errors }}
-              </div>
-              </div>
-            </div>
-          </div>
-        {% endif %}
-        
+      {% if form.non_field_errors %}
         <div class="form-content">
           <div class="form-group">
-            <button class="btn" type="submit">Send</button>
+            <div class="message error">
+              {{ form.non_field_errors }}
+            </div>
           </div>
         </div>
+      {% endif %}
 
-      </form>
-    </div>
+      <div class="form-content">
+        <div class="form-group">
+          <button class="btn" type="submit">Send</button>
+        </div>
+      </div>
 
-{% endblock content %}
+    </form>
+  </div>
+{% endblock %}
